@@ -54,11 +54,31 @@ async def lifespan(app: FastAPI):
     logger.info("app_shutting_down")
 
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.requests import Request
+from app.api.endpoints import sessions_router, roles_router
+
 app = FastAPI(
     title="AI Interview Prep Platform",
     description="Voice mock interviews and RAG-based doubt resolution for placement preparation",
     version="0.1.0",
     lifespan=lifespan,
+)
+
+app.include_router(sessions_router, prefix="/api/sessions", tags=["sessions"])
+app.include_router(roles_router, prefix="/api/roles", tags=["roles"])
+
+# Mount static and templates (for Phase 1 Text Chat)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/", tags=["ui"])
+async def index(request: Request):
+    return templates.TemplateResponse(
+    request=request,
+    name="index.html",
+    context={"title": "AI Interview Prep Platform"}
 )
 
 

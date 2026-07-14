@@ -51,6 +51,10 @@ class Settings(BaseSettings):
     llm_default_temperature: float = Field(default=0.7, description="Default LLM temperature")
     llm_default_max_tokens: int = Field(default=1024, description="Default max output tokens")
 
+    # --- Supabase ---
+    supabase_url: str = Field(default="", description="Supabase project URL")
+    supabase_key: str = Field(default="", description="Supabase service role or anon key")
+
     # --- Application ---
     app_env: str = Field(default="development", description="Environment: development | production")
     app_host: str = Field(default="0.0.0.0", description="Server bind host")

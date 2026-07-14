@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Prep Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
+            <div class="glass-panel setup-panel">
+                <h1>AI Mock Interview</h1>
+                <p>Select a role to begin your interview with Maya.</p>
+                <div class="role-selector">
+                    <select id="role-select">
+                        <option value="" disabled selected>Loading roles...</option>
+                    </select>
+                </div>
+                <button id="start-btn" class="primary-btn" disabled>Start Interview</button>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-header glass-panel">
+                <div class="header-info">
+                    <h2>Interview with Maya</h2>
+                    <span id="current-role" class="badge">Role</span>
+                </div>
+                <div class="timer" id="timer">00:00</div>
+            </div>
+            
+            <div id="chat-container" class="chat-container">
+                <!-- Messages will appear here -->
+            </div>
+            
+            <div class="input-area glass-panel">
+                <textarea id="message-input" placeholder="Type your response..." rows="2"></textarea>
+                <button id="send-btn" class="send-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
